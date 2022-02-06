@@ -25,6 +25,7 @@ slither . --filter-paths "openzeppelin"
 To-do:
 - Front-end
 - Deployment onto Kovan testnet
+- Implementing election start-end mechanism
 
 ## Contribution
 You can open a pull request or issue at any point you think you can add a feature or you have found a mistake/error.
