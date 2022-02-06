@@ -5,3 +5,14 @@ compiler:
   solc:
     remappings:
       - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.2.0"
+
+dotenv: .env
+
+networks:
+  development:
+    verify: false
+  kovan:
+    verify: true
+
+wallets:
+  from_key: ${PRIVATE_KEY}
