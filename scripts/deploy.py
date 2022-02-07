@@ -52,7 +52,7 @@ def deploy_ballot_box(do_send_data_to_frontend=False):
 # Make sure you are in the base directory while you deploy the contracts
 def send_info_to_frontend(contract_dict):
     with open("./frontend/brownie-info.json", "w+") as f:
-        json.dump(contract_dict, f, sort_keys=True, indent=4)
+        json.dump(contract_dict, f)
 
 
 def main():

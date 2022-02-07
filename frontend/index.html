@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>election-dapp</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md" style="height: 69px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Election</a>
+            <button class="btn btn-info font-monospace border rounded-pill shadow" data-bss-disabled-mobile="true"
+                data-bss-hover-animate="pulse" type="submit" id="connectButton" onclick="bundle.connect()">Connect Wallet</button>
+
+        </div>
+    </nav>
+    <section class="d-xl-flex login-clean" style="margin: 0px;padding: 254px 0px;height: 892px;">
+        <form action="javascript:void(0);">
+            <h2 class="visually-hidden">Vote Form</h2>
+            <div class="mb-3">
+                <input class="form-control" name="candidate" placeholder="Candidate" id="candInput">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary shadow d-block w-100" id="executeButton" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" type="submit"
+                    onclick="bundle.execute(document.getElementById('candInput').value, getBrownieInfo())">Submit</button>
+            </div>
+            <div class="mb-3">
+                <a>1. Connect with your MetaMask wallet.<br>
+                   2. Type a valid candidate address 
+                      that you are sure about.<br>
+                   3. Click 'Submit'<br>
+                   4. Accept the incoming transactions
+                      from MetaMask.
+                </a>
+            </div>
+        </form>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="./dist/bundle.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function getBrownieInfo(){
+            var resp;
+            $.ajax({
+                url: "brownie-info.json",
+                dataType: "json",
+                async: false,
+                success: function (response) {
+                    if(response){
+                        resp = response;
+                    }
+                }
+            });
+            return resp;
+        }
+    </script>
+</body>
+</html>
