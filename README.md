@@ -56,9 +56,9 @@ If you want to use this, make sure that you store your initial mnemonic somewher
 **Note that you will still have to deploy at every new launch!**
 
 To-do:
-- Front-end (In development)
+- Front-end 🔄
 - Deployment onto Kovan testnet
-- Implementing election start-end mechanism (In development)
+- Implementing election start-end mechanism 🔄
 
 ## Contribution
 You can open a pull request or issue at any point you think you can add a feature or you have found a mistake/error.
