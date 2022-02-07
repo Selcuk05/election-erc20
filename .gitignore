@@ -4,3 +4,6 @@ __pycache__
 .hypothesis/
 build/
 reports/
+frontend/dist/
+frontend/node_modules/
+frontend/brownie-info.json
