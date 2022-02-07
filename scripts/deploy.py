@@ -1,10 +1,24 @@
 from brownie import BallotBox, VoterToken, config, network
 
-from scripts.helpful_scripts import get_account, get_mock_accounts
+from scripts.helpful_scripts import (
+    LOCAL_BLOCKCHAIN_ENVIRONMENTS,
+    get_account,
+    get_mock_accounts,
+)
+
+
+# This is for future testnet/mainnet deployments
+def literal_data():
+    voters = []
+    candidates = []
+    return candidates, voters
 
 
 def deploy_ballot_box():
-    candidates, voters = get_mock_accounts()
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
+        candidates, voters = get_mock_accounts()
+    else:
+        candidates, voters = literal_data()
     account = get_account()
     voter_token = VoterToken.deploy(len(voters), {"from": account})
     ballot_box = BallotBox.deploy(
