@@ -20,7 +20,8 @@ def deploy_ballot_box():
     )
 
     tx.wait(1)
-    ballot_box.distribute({"from": account})
+    dist_tx = ballot_box.distribute({"from": account})
+    dist_tx.wait(1)
 
     return ballot_box, voter_token
 

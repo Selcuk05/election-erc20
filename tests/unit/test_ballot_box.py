@@ -52,4 +52,18 @@ def test_vote(ballot_box_and_token):
 
     tx_vote = ballot_box.vote(candidate_acc, {"from": voter_acc})
     tx_vote.wait(1)
+
     assert voter_token.balanceOf(candidate_acc) == 1
+
+
+def test_election_mechanism(ballot_box_and_token):
+    ballot_box, _ = ballot_box_and_token
+    admin_acc = get_account()
+
+    start_tx = ballot_box.startElection({"from": admin_acc})
+    start_tx.wait(1)
+    # should implement a timing mechanism in production use
+    end_tx = ballot_box.endElection({"from": admin_acc})
+    end_tx.wait(1)
+
+    assert ballot_box.electionOpen() == False
