@@ -1,5 +1,4 @@
 import json
-from textwrap import indent
 
 from brownie import BallotBox, VoterToken, accounts, config, network
 
