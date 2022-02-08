@@ -9,7 +9,7 @@ async function connect() {
         }
         document.getElementById("connectButton").innerHTML = "Connected";
         const accounts = await ethereum.request({ method: "eth_accounts" });
-        console.log(accounts);
+        console.log(accounts[0])
     } else {
         document.getElementById("connectButton").innerHTML =
             "Please install MetaMask";
@@ -35,13 +35,16 @@ async function execute(candidate, brownie_info) {
 
         var isOpened = await contract.electionOpen();
         if (!isOpened) {
-            alert("Election is not open yet!")
+            alert("Election is not open yet!");
             return
         }
 
-        /** 
-         * TODO: Approve still will take some gas because I don't have a check here.
-        */
+        /**
+         * ! CAN NOT IMPLEMENT AN APPROVE CHECK BECAUSE ETHERS.JS REFUSES TO GET hasVoted
+         * ! AS A FUNCTION. IT IS CORRECT IN THE ABI BUT IT JUST COMPLETELY DENIES THE
+         * ! FUNCTION, I WILL TRY IMPLEMENTING SOMETHING ELSE OR NOT IMPLEMENT AN APPROVE
+         * ! CHECK AT ALL
+         */
         await token_contract.approve(ballotBoxAddr, 1);
 
         try{
