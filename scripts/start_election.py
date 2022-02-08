@@ -27,5 +27,5 @@ def start_election(hours: int, minutes: int, seconds: int):
     tx.wait(1)
     print("Election has started")
     # ! vvvv this probably isnt a good way to do this, might change in the future.
-    time.sleep(hours * 3600 + minutes * 60 + seconds)
-    tx_end = ballot_box.endElection({"from": admin_acc})
+    """time.sleep(hours * 3600 + minutes * 60 + seconds)
+    tx_end = ballot_box.endElection({"from": admin_acc})"""

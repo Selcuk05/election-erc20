@@ -52,8 +52,7 @@ you can launch a single consistent ganache instance using the mnemonic with this
  * `ganache-cli -d -m 'your_mnemonic'`
 
 If you want to use this, make sure that you store your initial mnemonic somewhere.<br>
-**Note that you will still have to deploy at every new launch!**<br>
-**Also note that the mnemonic will not deploy the same ganache instance if you closed your device previously.**
+**Note that you will still have to deploy at every new launch!**
 
 To-do:
 - Front-end 🔄

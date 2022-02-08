@@ -34,17 +34,25 @@ async function execute(candidate, brownie_info) {
         const contract = new ethers.Contract(ballotBoxAddr, ballotBoxAbi, signer);
 
         var isOpened = await contract.electionOpen();
-        if(!isOpened){
+        if (!isOpened) {
             alert("Election is not open yet!")
             return
         }
-        
+
         /** 
-         * TODO: Should probably implement a check here, vote has built-in check but approve does not.
-         * TODO: I should also implement a possible error return to user, ethers.js doesnt enable this for me though.
+         * TODO: Approve still will take some gas because I don't have a check here.
         */
         await token_contract.approve(ballotBoxAddr, 1);
-        await contract.vote(candidate)
+
+        try{
+            await contract.vote(candidate);
+        }catch(err){
+            let reason = err.data.message.replace("VM Exception while processing transaction: revert ", "")
+            alert("You currently can not vote due to this reason: " + reason);
+            return;
+        }
+        alert("You have successfully voted!");
+
     } else {
         document.getElementById("executeButton").innerHTML = "Please connect";
     }
