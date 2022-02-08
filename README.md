@@ -13,14 +13,11 @@ Optional:
 pip install slither-analyzer
 ```
 
-**Run unit tests:**
-```
-brownie test -W ignore::DeprecationWarning
-```
-
-**Run Slither vulnerability tests:**
-```
-slither . --filter-paths "openzeppelin"
+**Commands:**
+```python
+brownie run scripts/deploy.py # Deployment
+brownie test -W ignore::DeprecationWarning # Unit testing
+slither . --filter-paths "openzeppelin" # Vulnerability testing (Needs slither-analyzer)
 ```
 
 ## Front-end
@@ -51,9 +48,12 @@ You have successfully voted with a mock account! <br>
 This will be integrated into a testnet too when the project is complete for testnet.
 
 **Ganache/MetaMask tip:** If you do not want to import ganache keys into MetaMask every time you launch a new one,<br>
-you can launch a single consistent ganache instance using the mnemonic with this command: `ganache-cli -d -m 'your_mnemonic'`<br>
-If you want to use this, make sure that you store your initial mnemonic somewhere.
-**Note that you will still have to deploy at every new launch!**
+you can launch a single consistent ganache instance using the mnemonic with this command: 
+ * `ganache-cli -d -m 'your_mnemonic'`
+
+If you want to use this, make sure that you store your initial mnemonic somewhere.<br>
+**Note that you will still have to deploy at every new launch!**<br>
+**Also note that the mnemonic will not deploy the same ganache instance if you closed your device previously.**
 
 To-do:
 - Front-end 🔄
