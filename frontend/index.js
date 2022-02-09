@@ -33,12 +33,7 @@ async function execute(candidate, brownie_info) {
         const token_contract = new ethers.Contract(voterTknAddr, voterTknAbi, signer);
         const contract = new ethers.Contract(ballotBoxAddr, ballotBoxAbi, signer);
 
-        /**
-         * this gets the first 2 indexes [0, 1] of candidates array
-         * for now this is set for 2 candidates but in case there are more candidates
-         * TODO: I should find a way to get the full array at some point
-         */
-        var candidates = await contract.candidates(1);
+        var candidates = await contract.getCandidates();
         console.log(candidates);
         if(!candidates.includes(candidate)){
             alert("The candidate address is not valid.");
@@ -73,7 +68,39 @@ async function execute(candidate, brownie_info) {
     }
 }
 
+
+async function renewElectionInfo(brownie_info){
+    if (typeof window.ethereum !== "undefined") {
+        const ballotBoxAddr = brownie_info.BallotBox.address;
+        const ballotBoxAbi = brownie_info.BallotBox.abi;
+        const voterTknAddr = brownie_info.VoterToken.address;
+        const voterTknAbi = brownie_info.VoterToken.abi;
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const token_contract = new ethers.Contract(voterTknAddr, voterTknAbi, signer);
+        const contract = new ethers.Contract(ballotBoxAddr, ballotBoxAbi, signer);
+
+        var candidates = await contract.getCandidates();
+        var candidateString = "";
+        for(let i = 0; i < candidates.length; i++){
+            candidate = candidates[i];
+            const votes = await token_contract.balanceOf(candidate);
+            candidateString += "<strong>Candidate " + i + "</strong></br>" + 
+                candidate + "</br>" 
+                + votes + " votes" + "</br>";
+        }
+
+        document.getElementById("electionInfo").innerHTML = candidateString;
+
+
+    } else {
+        document.getElementById("electionInfo").innerHTML = "Please connect";
+    }
+}
+
 module.exports = {
     connect,
     execute,
+    renewElectionInfo,
 };

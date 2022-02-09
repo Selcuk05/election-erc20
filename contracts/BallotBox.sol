@@ -19,7 +19,7 @@ contract BallotBox is Ownable {
     IERC20 public token;
 
     address[] public voters;
-    mapping(address => uint256) hasVoted;
+    mapping(address => uint256) public hasVoted;
     address[] public candidates;
 
     bool public electionOpen;
@@ -65,6 +65,10 @@ contract BallotBox is Ownable {
             }
         }
         return false;
+    }
+
+    function getCandidates() external view returns(address[] memory){
+        return candidates;
     }
 
     function vote(address _candidate) external {

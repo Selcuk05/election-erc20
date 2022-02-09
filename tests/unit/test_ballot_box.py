@@ -67,3 +67,8 @@ def test_election_mechanism(ballot_box_and_token):
     end_tx.wait(1)
 
     assert ballot_box.electionOpen() == False
+
+
+def test_get_candidates(ballot_box_and_token):
+    ballot_box, _ = ballot_box_and_token
+    assert len(ballot_box.getCandidates()) == 2

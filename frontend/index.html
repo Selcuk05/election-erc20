@@ -38,6 +38,16 @@
                 </a>
             </div>
         </form>
+
+        <form action="javascript:void(0);">
+            <h2 class="visually-hidden">Info Form</h2>
+            <div class="mb-3">
+                <center>
+                <h3>Votes</h3>
+                <a id="electionInfo" style="font-size: 11px;">Fetching data...</a>
+                </center>
+            </div>
+        </form>
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -58,6 +68,10 @@
             });
             return resp;
         }
+
+        window.setInterval(function(){
+            return bundle.renewElectionInfo(getBrownieInfo());
+        }, 5000);
     </script>
 </body>
 </html>
