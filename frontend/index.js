@@ -33,6 +33,18 @@ async function execute(candidate, brownie_info) {
         const token_contract = new ethers.Contract(voterTknAddr, voterTknAbi, signer);
         const contract = new ethers.Contract(ballotBoxAddr, ballotBoxAbi, signer);
 
+        /**
+         * this gets the first 2 indexes [0, 1] of candidates array
+         * for now this is set for 2 candidates but in case there are more candidates
+         * TODO: I should find a way to get the full array at some point
+         */
+        var candidates = await contract.candidates(1);
+        console.log(candidates);
+        if(!candidates.includes(candidate)){
+            alert("The candidate address is not valid.");
+            return
+        }
+
         var isOpened = await contract.electionOpen();
         if (!isOpened) {
             alert("Election is not open yet!");
