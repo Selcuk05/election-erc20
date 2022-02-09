@@ -1,27 +1,27 @@
 # election-erc20
-A decentralized application for elections using the ERC20 token protocol.
-This is currently a incomplete project.
+A decentralized application for elections using the ERC20 token protocol.<br>This is currently a project in development.
 
-Requirements:
+## Table of contents
+  - [Requirements](#requirements)
+  - [Testing the contracts](#testing-the-contracts)
+  - [Setup](#setup)
+  - [To-do](#to-do)
+  - [Credits](#credits)
+  - [Contribution](#contribution)
+
+## Requirements
 ```
 pip install eth-brownie
 npm install ganache-cli
 ```
 
-Optional:
-```
-pip install slither-analyzer
-```
-
-**Commands:**
+## Testing the contracts
 ```python
-brownie run scripts/deploy.py # Deployment
+brownie run scripts/deploy.py # Local deployment
 brownie test -W ignore::DeprecationWarning # Unit testing
-slither . --filter-paths "openzeppelin" # Vulnerability testing (Needs slither-analyzer)
 ```
 
-## Front-end
-Thanks to @PatrickAlphaC for providing with the [MetaMask connection codebase](https://github.com/PatrickAlphaC/html-js-ethers-connect/).<br>
+## Setup
 At the frontend folder;
 ```python
 yarn # Installs dependencies
@@ -30,7 +30,7 @@ yarn http-server # Runs the server
 ```
 If you changed any JS code in index.js and want to bundle it, you can run `yarn build` any time.
 
-Steps to test the front-end (for now, locally)
+Steps to set the front-end up (for now, locally)
 - Launch Ganache: `ganache-cli`
 - Deploy contracts (in base folder): `brownie run scripts/deploy.py`
 - Start election (in base folder): `brownie run scripts/start_election.py`
@@ -42,10 +42,7 @@ Steps to test the front-end (for now, locally)
 - Connect your wallet from the front-end
 - Get a candidate's address from ganache-cli
     * Choose either address 1 or address 2 because these are the candidates (0 = admin, others are voters)
-- Follow the inputs in the front-end and see the responses in the console (F12)
-
-You have successfully voted with a mock account! <br>
-This will be integrated into a testnet too when the project is complete for testnet.
+- Follow the inputs in the front-end and see the responses in the console
 
 **Ganache/MetaMask tip:** If you do not want to import ganache keys into MetaMask every time you launch a new one,<br>
 you can launch a single consistent ganache instance using the mnemonic with this command: 
@@ -54,10 +51,13 @@ you can launch a single consistent ganache instance using the mnemonic with this
 If you want to use this, make sure that you store your initial mnemonic somewhere.<br>
 **Note that you will still have to deploy at every new launch!**
 
-To-do:
+## To-do
 - Front-end 🔄
 - Deployment onto Kovan testnet
 - Implementing election start-end mechanism 🔄
+
+## Credits
+Thanks to [@PatrickAlphaC](https://github.com/PatrickAlphaC) for providing with the [MetaMask connection codebase](https://github.com/PatrickAlphaC/html-js-ethers-connect/).
 
 ## Contribution
 You can open a pull request or issue at any point you think you can add a feature or you have found a mistake/error.
