@@ -11,7 +11,7 @@ A decentralized application for elections using the ERC20 token protocol.<br>Thi
   - [Contribution](#contribution)
 
 ## Preview
-![Preview](https://i.imgur.com/0fNOg0k.png)<br>
+![Preview](preview.png)<br>
 **Note:** The front-end was designed by me using Bootstrap Studio. 
 If you think you can design a better, nicer front-end, feel free to open a pull request.
 
