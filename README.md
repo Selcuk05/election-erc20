@@ -63,9 +63,13 @@ If you want to use this, make sure that you store your initial mnemonic somewher
 **Note that you will still have to deploy at every new launch!**
 
 ## To-do
-- Front-end 🔄
+- Front-end
+   * Homepage design ✔️
+   * Integration with brownie ✔️
+   * Info on homepage 
+   * Post-vote info page
+- Implementing election start-end mechanism
 - Deployment onto Kovan testnet
-- Implementing election start-end mechanism 🔄
 
 ## Credits
 Thanks to [@PatrickAlphaC](https://github.com/PatrickAlphaC) for providing with the [MetaMask connection codebase](https://github.com/PatrickAlphaC/html-js-ethers-connect/).
