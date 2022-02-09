@@ -12,11 +12,13 @@ A decentralized application for elections using the ERC20 token protocol.<br>Thi
 ## Requirements
 - Python 3.6 or greater
 - pip
-- npm
-- brownie
-    * `pip install eth-brownie`
+- NodeJS and npm
+- yarn
+    * `npm install yarn`
 - ganache-cli
     * `npm install ganache-cli`
+- brownie
+    * `pip install eth-brownie`
 
 ## Testing the contracts
 ```python
