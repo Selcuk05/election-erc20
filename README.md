@@ -10,10 +10,13 @@ A decentralized application for elections using the ERC20 token protocol.<br>Thi
   - [Contribution](#contribution)
 
 ## Requirements
-```
-pip install eth-brownie
-npm install ganache-cli
-```
+- Python 3.6 or greater
+- pip
+- npm
+- brownie
+    * `pip install eth-brownie`
+- ganache-cli
+    * `npm install ganache-cli`
 
 ## Testing the contracts
 ```python
