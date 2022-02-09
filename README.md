@@ -2,12 +2,18 @@
 A decentralized application for elections using the ERC20 token protocol.<br>This is currently a project in development.
 
 ## Table of contents
+  - [Preview](#preview)
   - [Requirements](#requirements)
   - [Testing the contracts](#testing-the-contracts)
   - [Setup](#setup)
   - [To-do](#to-do)
   - [Credits](#credits)
   - [Contribution](#contribution)
+
+## Preview
+![Preview](https://i.imgur.com/0fNOg0k.png)<br>
+**Note:** The front-end was designed by me using Bootstrap Studio. 
+If you think you can design a better, nicer front-end, feel free to open a pull request.
 
 ## Requirements
 - Python 3.6 or greater
