@@ -93,7 +93,12 @@ async function renewElectionInfo(brownie_info){
 
         document.getElementById("electionInfo").innerHTML = candidateString;
 
-
+        var isOpened = await contract.electionOpen();
+        if(isOpened){
+            document.getElementsByClassName("navbar-brand")[0].innerHTML = "Election (OPEN!)"
+        }else{
+            document.getElementsByClassName("navbar-brand")[0].innerHTML = "Election (Not open)"
+        }
     } else {
         document.getElementById("electionInfo").innerHTML = "Please connect";
     }

@@ -67,7 +67,7 @@ If you want to use this, make sure that you store your initial mnemonic somewher
    * Homepage design ✔️
    * Integration with brownie ✔️
    * Info on homepage ✔️
-   * Post-vote info page
+   * Post-election info on homepage
 - Implementing election start-end mechanism
 - Deployment onto Kovan testnet
 
