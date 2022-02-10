@@ -1,5 +1,5 @@
 # election-erc20
-A decentralized application for elections using the ERC20 token protocol.<br>This is currently a project in development.
+A decentralized application for elections using the ERC20 token protocol.
 
 ## Table of contents
   - [Preview](#preview)
