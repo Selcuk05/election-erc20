@@ -118,7 +118,6 @@ async function electionEndListener(brownie_info, renewInterval){
         
         contract.on("ElectionEnded", async function(){
             window.clearInterval(renewInterval);
-            console.log("election ended");
             var candidates = await contract.getCandidates();
             var candidateHoldings = {};
 
@@ -137,12 +136,12 @@ async function electionEndListener(brownie_info, renewInterval){
 
             console.log(possibleWinners);
 
+            document.getElementById("infoTitle").innerHTML = "Results";
             if(possibleWinners.length > 1){
                 var resultString = "Election is a draw!";
                 for(let i = 0; i<possibleWinners.length; i++){
                     resultString += "</br>" + possibleWinners[i] + "</br>";
                 }
-
                 document.getElementById("electionInfo").innerHTML = resultString;
             }else{
                 document.getElementById("electionInfo").innerHTML = "Winner</br>" + possibleWinners[0];
