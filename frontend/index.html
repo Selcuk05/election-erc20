@@ -68,9 +68,11 @@
             return resp;
         }
 
-        window.setInterval(function(){
+        let renewalInterval = window.setInterval(function(){
             return bundle.renewElectionInfo(getBrownieInfo());
         }, 5000);
+
+        bundle.electionEndListener(getBrownieInfo(), renewalInterval);
     </script>
 </body>
 </html>

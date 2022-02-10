@@ -104,8 +104,57 @@ async function renewElectionInfo(brownie_info){
     }
 }
 
+async function electionEndListener(brownie_info, renewInterval){
+    if (typeof window.ethereum !== "undefined") {
+        const ballotBoxAddr = brownie_info.BallotBox.address;
+        const ballotBoxAbi = brownie_info.BallotBox.abi;
+        const voterTknAddr = brownie_info.VoterToken.address;
+        const voterTknAbi = brownie_info.VoterToken.abi;
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const token_contract = new ethers.Contract(voterTknAddr, voterTknAbi, signer);
+        const contract = new ethers.Contract(ballotBoxAddr, ballotBoxAbi, signer);
+        
+        contract.on("ElectionEnded", async function(){
+            window.clearInterval(renewInterval);
+            console.log("election ended");
+            var candidates = await contract.getCandidates();
+            var candidateHoldings = {};
+
+            for(let i=0; i<candidates.length; i++){
+                candidateHoldings[candidates[i]] = await token_contract.balanceOf(candidates[i]);
+            }
+
+            const max = i => {
+                let max = Math.max(...Object.values(i))
+                return Object.keys(i).filter(key => i[key] == max)
+            }
+
+            console.log(candidateHoldings);
+
+            const possibleWinners = max(candidateHoldings);
+
+            console.log(possibleWinners);
+
+            if(possibleWinners.length > 1){
+                var resultString = "Election is a draw!";
+                for(let i = 0; i<possibleWinners.length; i++){
+                    resultString += "</br>" + possibleWinners[i] + "</br>";
+                }
+
+                document.getElementById("electionInfo").innerHTML = resultString;
+            }else{
+                document.getElementById("electionInfo").innerHTML = "Winner</br>" + possibleWinners[0];
+            }
+            document.getElementsByClassName("navbar-brand")[0].innerHTML = "Election (Ended)";
+        })
+    }
+}
+
 module.exports = {
     connect,
     execute,
     renewElectionInfo,
+    electionEndListener,
 };
